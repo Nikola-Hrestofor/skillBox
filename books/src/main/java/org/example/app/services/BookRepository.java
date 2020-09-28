@@ -20,19 +20,24 @@ public class BookRepository implements ProjectRepository<Book> {
 
     @Override
     public void store(Book book) {
-        book.setId(book.hashCode());
-        logger.info("store new book: " + book);
-        repo.add(book);
+        if(!book.getAuthor().equals("") || !(book.getSize() == null) || !book.getTitle().equals("")) {
+            book.setId(book.hashCode());
+            logger.info("store new book: " + book);
+            repo.add(book);
+        } else {
+            logger.info("empty entry..");
+        }
     }
 
     @Override
-    public boolean removeItemById(Integer bookIdToRemove) {
+    public boolean removeItem(Integer bookIdToRemove, String bookAuthorToRemove, String bookTitleToRemove, Integer bookSizeToRemove) {
         for (Book book : retreiveAll()) {
-            if (book.getId().equals(bookIdToRemove)) {
+            if(bookIdToRemove == null & bookAuthorToRemove.equals("") & bookTitleToRemove.equals("") & bookSizeToRemove == null) return true;
+            if ((book.getId().equals(bookIdToRemove) || bookIdToRemove == null) & (book.getAuthor().equals(bookAuthorToRemove) || bookAuthorToRemove.equals("")) & (book.getTitle().equals(bookTitleToRemove) || bookTitleToRemove.equals("")) & (book.getSize().equals(bookSizeToRemove) || bookSizeToRemove == null)) {
                 logger.info("remove book completed: " + book);
-                return repo.remove(book);
+                repo.remove(book);
             }
         }
-        return false;
+        return true;
     }
 }

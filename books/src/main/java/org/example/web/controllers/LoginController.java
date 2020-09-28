@@ -39,4 +39,9 @@ public class LoginController {
             return "redirect:/login";
         }
     }
+
+    @PostMapping("/sign")
+    public String sign_up() {
+        return "redirect:/sign_up_page/create";
+    }
 }

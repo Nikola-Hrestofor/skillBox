@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My book shelf</title>
+    <style>
+        #root_container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        table {
+            margin: 25px;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        th, td {
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+<div id="root_container">
+    <form method="post" th:action="@{/sign_up_page/add}">
+<!--        th:object="${user}">-->
+        <table>
+            <tr>
+                <td>
+                    <input type="text" placeholder="login" th:name="user">
+                </td>
+                <td>
+                    <input type="password" placeholder="password" th:name="password">
+                </td>
+                <td>
+                    <input type="password" placeholder="password" th:name="password2">
+                </td>
+                <td>
+                    <input type="submit" value="add">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
