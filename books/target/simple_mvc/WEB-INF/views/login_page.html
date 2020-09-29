@@ -25,7 +25,9 @@
         <input class="login_item" type="password" placeholder="password" th:field="*{password}">
         <br>
         <input class="login_item" type="submit" value="login">
+        <input type="button" onclick="location.href='sign_up_page/create';" value="Sing up" />
     </form>
+<!--    Или так лучше сделать кнопку регистрации?-->
     <form method="post" th:action="@{/login/sign}">
         <button class="login_item">Sing up</button>
     </form>

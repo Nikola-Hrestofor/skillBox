@@ -20,6 +20,10 @@ public class BookService {
         return bookRepo.retreiveAll();
     }
 
+    public List<Book> getBooksByParams(String bookAuthor, String bookTitle, Integer bookSize) {
+        return bookRepo.retreiveByParams(bookAuthor, bookTitle, bookSize);
+    }
+
     public void saveBook(Book book) {
         bookRepo.store(book);
     }

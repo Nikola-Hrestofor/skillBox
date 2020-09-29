@@ -31,6 +31,16 @@ public class BookShelfController {
         return "book_shelf";
     }
 
+    @PostMapping("/sort")
+    public String sortBook(Book book, Model model) {
+        System.out.println(book.getAuthor());
+//        bookService.getBooksByParams(book.getAuthor(), book.getTitle(), book.getSize());
+        model.addAttribute("book", new Book());
+        model.addAttribute("bookList", bookService.getBooksByParams(book.getAuthor(), book.getTitle(), book.getSize()));
+        return "book_shelf";
+    }
+
+
     @PostMapping("/save")
     public String saveBook(Book book) {
         bookService.saveBook(book);

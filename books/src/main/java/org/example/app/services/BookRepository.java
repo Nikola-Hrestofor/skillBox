@@ -19,6 +19,17 @@ public class BookRepository implements ProjectRepository<Book> {
     }
 
     @Override
+    public List<Book> retreiveByParams(String bookAuthor, String bookTitle, Integer bookSize) {
+        ArrayList<Book> books = new ArrayList<>();
+        for(Book book: retreiveAll()){
+            if ((bookAuthor.equals("") || book.getAuthor().equals(bookAuthor)) & (bookTitle.equals("") || book.getTitle().equals(bookTitle)) & (bookSize == null || book.getSize() == bookSize)){
+                books.add(book);
+            }
+        }
+        return books;
+    }
+
+    @Override
     public void store(Book book) {
         if(!book.getAuthor().equals("") || !(book.getSize() == null) || !book.getTitle().equals("")) {
             book.setId(book.hashCode());
@@ -33,7 +44,7 @@ public class BookRepository implements ProjectRepository<Book> {
     public boolean removeItem(Integer bookIdToRemove, String bookAuthorToRemove, String bookTitleToRemove, Integer bookSizeToRemove) {
         for (Book book : retreiveAll()) {
             if(bookIdToRemove == null & bookAuthorToRemove.equals("") & bookTitleToRemove.equals("") & bookSizeToRemove == null) return true;
-            if ((book.getId().equals(bookIdToRemove) || bookIdToRemove == null) & (book.getAuthor().equals(bookAuthorToRemove) || bookAuthorToRemove.equals("")) & (book.getTitle().equals(bookTitleToRemove) || bookTitleToRemove.equals("")) & (book.getSize().equals(bookSizeToRemove) || bookSizeToRemove == null)) {
+            if ((bookIdToRemove == null || book.getId().equals(bookIdToRemove)) & (bookAuthorToRemove.equals("") || book.getAuthor().equals(bookAuthorToRemove)) & (bookTitleToRemove.equals("") || book.getTitle().equals(bookTitleToRemove)) & (bookSizeToRemove == null || book.getSize() == bookSizeToRemove)) {
                 logger.info("remove book completed: " + book);
                 repo.remove(book);
             }
