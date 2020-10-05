@@ -1,7 +1,6 @@
 package org.example.app.services;
 
 import org.example.web.dto.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,7 +9,6 @@ import java.util.List;
 public class SignUpService {
     private final UserRepository userRepo;
 
-//    @Autowired
     public SignUpService(UserRepository userRepo) {
         this.userRepo = userRepo;
     }
