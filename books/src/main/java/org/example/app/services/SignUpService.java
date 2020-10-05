@@ -10,7 +10,7 @@ import java.util.List;
 public class SignUpService {
     private final UserRepository userRepo;
 
-    @Autowired
+//    @Autowired
     public SignUpService(UserRepository userRepo) {
         this.userRepo = userRepo;
     }

@@ -1,8 +1,12 @@
 C:\GIT\skillBox\books\src\main\java\org\example\app\services\ProjectRepository.java
+C:\GIT\skillBox\books\src\main\java\org\example\web\controllers\SingUpController.java
 C:\GIT\skillBox\books\src\main\java\org\example\web\controllers\LoginController.java
 C:\GIT\skillBox\books\src\main\java\org\example\web\dto\Book.java
+C:\GIT\skillBox\books\src\main\java\org\example\app\services\UserRepository.java
 C:\GIT\skillBox\books\src\main\java\org\example\app\services\BookRepository.java
 C:\GIT\skillBox\books\src\main\java\org\example\web\dto\LoginForm.java
+C:\GIT\skillBox\books\src\main\java\org\example\app\services\SignUpService.java
 C:\GIT\skillBox\books\src\main\java\org\example\app\services\BookService.java
 C:\GIT\skillBox\books\src\main\java\org\example\web\controllers\BookShelfController.java
+C:\GIT\skillBox\books\src\main\java\org\example\web\dto\User.java
 C:\GIT\skillBox\books\src\main\java\org\example\app\services\LoginService.java

@@ -18,6 +18,5 @@ public class UserRepository {
 
     public void add(User user) {
         repo.add(user);
-
     }
 }

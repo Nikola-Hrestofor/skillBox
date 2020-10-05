@@ -13,7 +13,6 @@ public class LoginService {
 
     private final UserRepository users;
 
-    @Autowired
     public LoginService(UserRepository users) {
         this.users = users;
     }
