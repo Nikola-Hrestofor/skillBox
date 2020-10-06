@@ -18,15 +18,15 @@ public class BookService {
         return bookRepo.retreiveAll();
     }
 
-    public List<Book> getBooksByParams(String bookAuthor, String bookTitle, Integer bookSize) {
-        return bookRepo.retreiveByParams(bookAuthor, bookTitle, bookSize);
+    public List<Book> getBooksByParams(String regexToRemove) {
+        return bookRepo.retreiveByParams(regexToRemove);
     }
 
     public void saveBook(Book book) {
         bookRepo.store(book);
     }
 
-    public boolean removeBook(Integer bookIdToRemove, String bookAuthorToRemove, String bookTitleToRemove, Integer bookSizeToRemove) {
-        return bookRepo.removeItem(bookIdToRemove, bookAuthorToRemove, bookTitleToRemove, bookSizeToRemove);
+    public boolean removeBook(String regex) {
+        return bookRepo.removeItem(regex);
     }
 }

@@ -32,12 +32,12 @@ public class BookShelfController {
     }
 
     @PostMapping("/filter")
-    public String filterBook(Book book, Model model) {
+    public String filterBook(Model model,
+                             @RequestParam(value = "regex") String regex) {
         model.addAttribute("book", new Book());
-        model.addAttribute("bookList", bookService.getBooksByParams(book.getAuthor(), book.getTitle(), book.getSize()));
+        model.addAttribute("bookList", bookService.getBooksByParams(regex));
         return "book_shelf";
     }
-
 
     @PostMapping("/save")
     public String saveBook(Book book) {
@@ -47,11 +47,8 @@ public class BookShelfController {
     }
 
     @PostMapping("/remove")
-    public String removeBook(@RequestParam(value = "bookIdToRemove") Integer bookIdToRemove,
-                             @RequestParam(value = "bookAuthorToRemove") String bookAuthorToRemove,
-                             @RequestParam(value = "bookTitleToRemove") String bookTitleToRemove,
-                             @RequestParam(value = "bookSizeToRemove") Integer bookSizeToRemove) {
-        if (bookService.removeBook(bookIdToRemove, bookAuthorToRemove, bookTitleToRemove, bookSizeToRemove)) {
+    public String removeBook(@RequestParam(value = "regex") String regex){
+        if (bookService.removeBook(regex)) {
             return "redirect:/books/shelf";
         } else {
             return "book_shelf";

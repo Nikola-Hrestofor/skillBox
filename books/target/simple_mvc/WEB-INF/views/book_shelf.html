@@ -50,45 +50,15 @@
         </table>
     </form>
 
-    <form method="post" th:action="@{/books/remove}">
-        <table>
-            <tr>
-                <td>
-                    <input type="number" placeholder="id number" th:name="bookIdToRemove">
-                </td>
-                <td>
-                    <input type="text" placeholder="author" th:name="bookAuthorToRemove">
-                </td>
-                <td>
-                    <input type="text" placeholder="title" th:name="bookTitleToRemove">
-                </td>
-                <td>
-                    <input type="number" placeholder="size" th:name="bookSizeToRemove">
-                </td>
-                <td>
-                    <input type="submit" value="remove">
-                </td>
-            </tr>
-        </table>
-    </form>
-
-
-    <form method="post" th:action="@{/books/filter}" th:object="${book}">
+    <form method="post" th:action="@{/books/filter}">
         <table id="books">
             <tr>
-                <th>
-                    <input type="text" placeholder="author" th:field="*{author}">
-                </th>
-                <th>
-                    <input type="text" placeholder="book_title" th:field="*{title}">
-                </th>
-                <th>
-                    <input type="number" placeholder="size (pages)" th:field="*{size}">
-                </th>
-                <th>
-                <th>
+                <td>
+                    <input type="text" placeholder="filter" th:name="regex">
+                </td>
+                <td>
                     <input type="submit" value="GO!">
-                </th>
+                </td>
             </tr>
             <tr>
                 <th>id</th>
@@ -106,6 +76,18 @@
     </form>
     <form method="get" th:action="@{/books/shelf}">
         <button class="login_item">Reset</button>
+    </form>
+    <form method="post" th:action="@{/books/remove}">
+        <table>
+            <tr>
+                <td>
+                    <input type="text" placeholder="remove" th:name="regex">
+                </td>
+                <td>
+                    <input type="submit" value="remove">
+                </td>
+            </tr>
+        </table>
     </form>
 </div>
 </body>

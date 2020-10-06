@@ -19,10 +19,13 @@ public class BookRepository implements ProjectRepository<Book> {
     }
 
     @Override
-    public List<Book> retreiveByParams(String bookAuthor, String bookTitle, Integer bookSize) {
+    public List<Book> retreiveByParams(String regex) {
         ArrayList<Book> books = new ArrayList<>();
         for(Book book: retreiveAll()){
-            if ((bookAuthor.equals("") || book.getAuthor().equals(bookAuthor)) && (bookTitle.equals("") || book.getTitle().equals(bookTitle)) && (bookSize == null || book.getSize() == bookSize)){
+            if (book.getAuthor().matches(".*" + regex + ".*") ||
+                    book.getTitle().matches(".*" + regex + ".*") ||
+                    (book.getSize() != null && book.getSize().toString().matches(".*" + regex + ".*")) ||
+                    (book.getId() != null && book.getId().toString().matches(".*" + regex + ".*"))){
                 books.add(book);
             }
         }
@@ -41,10 +44,13 @@ public class BookRepository implements ProjectRepository<Book> {
     }
 
     @Override
-    public boolean removeItem(Integer bookIdToRemove, String bookAuthorToRemove, String bookTitleToRemove, Integer bookSizeToRemove) {
+    public boolean removeItem(String regex) {
         for (Book book : retreiveAll()) {
-            if(bookIdToRemove == null & bookAuthorToRemove.equals("") && bookTitleToRemove.equals("") && bookSizeToRemove == null) return true;
-            if ((bookIdToRemove == null || book.getId().equals(bookIdToRemove)) & (bookAuthorToRemove.equals("") || book.getAuthor().equals(bookAuthorToRemove)) & (bookTitleToRemove.equals("") || book.getTitle().equals(bookTitleToRemove)) & (bookSizeToRemove == null || book.getSize() == bookSizeToRemove)) {
+            if(regex == null) return true;
+            if (book.getAuthor().matches(".*" + regex + ".*") ||
+                    book.getTitle().matches(".*" + regex + ".*") ||
+                    (book.getSize() != null && book.getSize().toString().matches(".*" + regex + ".*")) ||
+                    (book.getId() != null && book.getId().toString().matches(".*" + regex + ".*"))){
                 logger.info("remove book completed: " + book);
                 repo.remove(book);
             }
